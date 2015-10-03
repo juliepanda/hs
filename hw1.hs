@@ -41,7 +41,6 @@ addDigs x
     | otherwise   = x
 
 -- Exercise 5 -----------------------------------------
---
 -- -- Validate a credit card number using the above functions.
 luhn          :: Integer -> Bool
 luhn 0 = False
@@ -52,11 +51,20 @@ luhn x
         where credify = (sumDigits (doubleEveryOther (toRevDigits x) ) ) `mod` 10
 
 -- Towers of Hanoi for three pegs
+-- move all to second Peg
+-- Exercise 5 -----------------------------------------
 type Peg = String
 type Move = (Peg, Peg)
 
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi n a b c
     | n == 0      = []
-    | n > 1       = hanoi (n-1) a c b ++ [(a, b)] ++ hanoi (n-1) c b a
     | n == 1      = [(a, b)]
+    | n > 1       = hanoi (n-1) a c b ++ [(a, b)] ++ hanoi (n-1) c b a
+
+-- Exercise 6 -----------------------------------------
+hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+hanoi4 n a b c d
+    | n == 0      = []
+    | n == 1      = [(a, b)]
+    | n > 1       = [(a, d)] ++ hanoi (n-1) a b c ++ [(d, b)]
