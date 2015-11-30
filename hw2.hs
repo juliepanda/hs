@@ -5,7 +5,7 @@ module HW02 where
 
 -- A peg can be one of six colors
 data Peg = Red | Green | Blue | Yellow | Orange | Purple
-         deriving (Show, Eq, Ord)
+	deriving (Show, Eq, Ord)
 
 -- A code is defined to simply be a list of Pegs
 type Code = [Peg]
@@ -13,7 +13,7 @@ type Code = [Peg]
 -- A move is constructed using a Code and two integers; the number of
 -- exact matches and the number of regular matches
 data Move = Move Code Int Int
-          deriving (Show, Eq)
+	deriving (Show, Eq)
 
 -- List containing all of the different Pegs
 colors :: [Peg]
@@ -26,9 +26,9 @@ exactMatches :: Code -> Code -> Int
 exactMatches [] []    = 0
 exactMatches [] _     = 0
 exactMatches _ []     = 0
-exactMatches (a:as) (b:bs)
-      | a == b        = 1 + exactMatches as bs
-      | otherwise     = exactMatches as bs
+	exactMatches (a:as) (b:bs)
+		| a == b        = 1 + exactMatches as bs
+		| otherwise     = exactMatches as bs
 
 -- Exercise 2 -----------------------------------------
 
@@ -42,7 +42,7 @@ countColors x         = [length (filter (==Red) x)] ++ [length (filter (==Green)
 -- Count number of matches between the actual code and the guess
 matches :: Code -> Code -> Int
 matches [] []         = []
-matches a b           = (countColors a)
+	matches a b           = (countColors a)
 
 -- Exercise 3 -----------------------------------------
 
